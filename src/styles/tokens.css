@@ -1,0 +1,106 @@
+/* Orbital style guide design tokens. Single source of truth: never hard-code these values elsewhere. */
+:root {
+	/* Color */
+	--color-void: #05060f;
+	--color-surface: #0b0e1f;
+	--color-surface-raised: #141936;
+	--color-surface-glass: rgba(20, 25, 54, 0.55);
+	--color-border: rgba(154, 164, 199, 0.16);
+	--color-border-strong: rgba(154, 164, 199, 0.32);
+	--color-text: #eaf0ff;
+	--color-text-secondary: #9aa4c7;
+	--color-text-muted: #6b7499;
+	--color-text-on-accent: #05060f;
+	--color-ion: #3df5ff;
+	--color-ion-hover: #7af8ff;
+	--color-nebula: #8b5cf6;
+	--color-nebula-soft: rgba(139, 92, 246, 0.16);
+	--color-solar: #ff8a3d;
+	--color-success: #3dffa8;
+	--color-warning: #ffd23d;
+	--color-danger: #ff4d6d;
+	--color-info: #5b9dff;
+	--gradient-hero: radial-gradient(120% 80% at 50% 0%, #1b1f4b 0%, #05060f 60%);
+	--gradient-accent: linear-gradient(90deg, #3df5ff 0%, #8b5cf6 100%);
+
+	/* Type */
+	--font-display: 'Space Grotesk', system-ui, sans-serif;
+	--font-body: 'Inter', system-ui, sans-serif;
+	--font-data: 'JetBrains Mono', ui-monospace, monospace;
+	--text-display: 4.5rem;
+	--lh-display: 1;
+	--text-h1: 3.5rem;
+	--lh-h1: 1.05;
+	--text-h2: 2.5rem;
+	--lh-h2: 1.1;
+	--text-h3: 2rem;
+	--lh-h3: 1.15;
+	--text-h4: 1.5rem;
+	--lh-h4: 1.25;
+	--text-lg: 1.25rem;
+	--lh-lg: 1.5;
+	--text-md: 1rem;
+	--lh-md: 1.5;
+	--text-sm: 0.875rem;
+	--lh-sm: 1.45;
+	--text-xs: 0.75rem;
+	--lh-xs: 1.4;
+	--text-data: 0.875rem;
+	--lh-data: 1.4;
+
+	/* Space */
+	--space-0: 0;
+	--space-1: 4px;
+	--space-2: 8px;
+	--space-3: 12px;
+	--space-4: 16px;
+	--space-5: 24px;
+	--space-6: 32px;
+	--space-7: 48px;
+	--space-8: 64px;
+	--space-9: 96px;
+	--space-10: 128px;
+
+	/* Shape, depth, motion */
+	--radius-sm: 6px;
+	--radius-md: 10px;
+	--radius-lg: 16px;
+	--radius-xl: 24px;
+	--radius-full: 9999px;
+	--shadow-card: 0 8px 32px rgba(0, 0, 0, 0.45);
+	--glow-ion: 0 0 0 1px rgba(61, 245, 255, 0.5), 0 0 24px rgba(61, 245, 255, 0.35);
+	--glow-nebula: 0 0 24px rgba(139, 92, 246, 0.35);
+	--blur-glass: blur(16px) saturate(140%);
+	--duration-fast: 120ms;
+	--duration-base: 220ms;
+	--duration-slow: 420ms;
+	--ease-orbit: cubic-bezier(0.22, 1, 0.36, 1);
+
+	/* Layout. Page gutter steps up with the viewport (see media queries below). */
+	--container-max: 1280px;
+	--reading-max: 720px;
+	--gutter: var(--space-4);
+	--section-gap: var(--space-7);
+}
+
+@media (min-width: 640px) {
+	:root {
+		--gutter: var(--space-6);
+		--section-gap: var(--space-8);
+	}
+}
+
+@media (min-width: 1024px) {
+	:root {
+		--gutter: var(--space-7);
+	}
+}
+
+@media (max-width: 639px) {
+	:root {
+		--text-display: 3rem;
+		--text-h1: 2.5rem;
+		--text-h2: 2rem;
+		--text-h3: 1.5rem;
+	}
+}

@@ -1,0 +1,646 @@
+{
+  "components": [
+    {
+      "name": "company_hero",
+      "display_name": "company hero",
+      "is_nestable": true,
+      "is_root": false,
+      "schema": {
+        "name": {
+          "type": "text",
+          "display_name": "Company name",
+          "required": true
+        },
+        "tagline": {
+          "type": "text",
+          "display_name": "Tagline"
+        },
+        "logo": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "display_name": "Logo"
+        },
+        "hero_image": {
+          "type": "asset",
+          "filetypes": [
+            "images",
+            "videos"
+          ],
+          "display_name": "Hero image or video",
+          "description": "Videos play muted on a loop behind the heading."
+        },
+        "is_hidden": {
+          "type": "boolean",
+          "display_name": "Hide this section"
+        }
+      }
+    },
+    {
+      "name": "company_mission",
+      "display_name": "company mission",
+      "is_nestable": true,
+      "is_root": false,
+      "schema": {
+        "title": {
+          "type": "text",
+          "display_name": "Title"
+        },
+        "subtitle": {
+          "type": "text",
+          "display_name": "Subtitle"
+        },
+        "is_hidden": {
+          "type": "boolean",
+          "display_name": "Hide this section"
+        },
+        "mission": {
+          "type": "textarea",
+          "display_name": "Mission"
+        },
+        "vision": {
+          "type": "textarea",
+          "display_name": "Vision"
+        },
+        "values": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "core_value"
+          ],
+          "display_name": "Core values"
+        }
+      }
+    },
+    {
+      "name": "company_key_figures",
+      "display_name": "company key figures",
+      "is_nestable": true,
+      "is_root": false,
+      "schema": {
+        "title": {
+          "type": "text",
+          "display_name": "Title"
+        },
+        "subtitle": {
+          "type": "text",
+          "display_name": "Subtitle"
+        },
+        "is_hidden": {
+          "type": "boolean",
+          "display_name": "Hide this section"
+        },
+        "statistics": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "company_statistic"
+          ],
+          "display_name": "Key figures"
+        }
+      }
+    },
+    {
+      "name": "company_story",
+      "display_name": "company story",
+      "is_nestable": true,
+      "is_root": false,
+      "schema": {
+        "title": {
+          "type": "text",
+          "display_name": "Title"
+        },
+        "subtitle": {
+          "type": "text",
+          "display_name": "Subtitle"
+        },
+        "is_hidden": {
+          "type": "boolean",
+          "display_name": "Hide this section"
+        },
+        "milestones": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "milestone"
+          ],
+          "display_name": "Milestones"
+        }
+      }
+    },
+    {
+      "name": "company_team",
+      "display_name": "company team",
+      "is_nestable": true,
+      "is_root": false,
+      "schema": {
+        "title": {
+          "type": "text",
+          "display_name": "Title"
+        },
+        "subtitle": {
+          "type": "text",
+          "display_name": "Subtitle"
+        },
+        "is_hidden": {
+          "type": "boolean",
+          "display_name": "Hide this section"
+        },
+        "members": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "team_member"
+          ],
+          "display_name": "Team members (shown in this order)"
+        }
+      }
+    },
+    {
+      "name": "company_safety",
+      "display_name": "company safety",
+      "is_nestable": true,
+      "is_root": false,
+      "schema": {
+        "title": {
+          "type": "text",
+          "display_name": "Title"
+        },
+        "subtitle": {
+          "type": "text",
+          "display_name": "Subtitle"
+        },
+        "is_hidden": {
+          "type": "boolean",
+          "display_name": "Hide this section"
+        },
+        "certifications": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "safety_certification"
+          ],
+          "display_name": "Certifications"
+        }
+      }
+    },
+    {
+      "name": "company_spaceports",
+      "display_name": "company spaceports",
+      "is_nestable": true,
+      "is_root": false,
+      "schema": {
+        "title": {
+          "type": "text",
+          "display_name": "Title"
+        },
+        "subtitle": {
+          "type": "text",
+          "display_name": "Subtitle"
+        },
+        "is_hidden": {
+          "type": "boolean",
+          "display_name": "Hide this section"
+        },
+        "spaceports": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "spaceport"
+          ],
+          "display_name": "Spaceports"
+        }
+      }
+    },
+    {
+      "name": "company_partners",
+      "display_name": "company partners",
+      "is_nestable": true,
+      "is_root": false,
+      "schema": {
+        "title": {
+          "type": "text",
+          "display_name": "Title"
+        },
+        "subtitle": {
+          "type": "text",
+          "display_name": "Subtitle"
+        },
+        "is_hidden": {
+          "type": "boolean",
+          "display_name": "Hide this section"
+        },
+        "partners": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "partner"
+          ],
+          "display_name": "Partners"
+        }
+      }
+    },
+    {
+      "name": "company_testimonials",
+      "display_name": "company testimonials",
+      "is_nestable": true,
+      "is_root": false,
+      "schema": {
+        "title": {
+          "type": "text",
+          "display_name": "Title"
+        },
+        "subtitle": {
+          "type": "text",
+          "display_name": "Subtitle"
+        },
+        "is_hidden": {
+          "type": "boolean",
+          "display_name": "Hide this section"
+        },
+        "testimonials": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "testimonial"
+          ],
+          "display_name": "Testimonials"
+        }
+      }
+    },
+    {
+      "name": "company_contact",
+      "display_name": "company contact",
+      "is_nestable": true,
+      "is_root": false,
+      "schema": {
+        "title": {
+          "type": "text",
+          "display_name": "Title"
+        },
+        "subtitle": {
+          "type": "text",
+          "display_name": "Subtitle"
+        },
+        "is_hidden": {
+          "type": "boolean",
+          "display_name": "Hide this section"
+        },
+        "email": {
+          "type": "text",
+          "display_name": "Email"
+        },
+        "phone": {
+          "type": "text",
+          "display_name": "Phone"
+        },
+        "address": {
+          "type": "textarea",
+          "display_name": "Address"
+        },
+        "support_hours": {
+          "type": "text",
+          "display_name": "Support hours"
+        },
+        "social_links": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "social_link"
+          ],
+          "display_name": "Social links"
+        }
+      }
+    },
+    {
+      "name": "company_cta",
+      "display_name": "company cta",
+      "is_nestable": true,
+      "is_root": false,
+      "schema": {
+        "title": {
+          "type": "text",
+          "display_name": "Title"
+        },
+        "subtitle": {
+          "type": "text",
+          "display_name": "Subtitle"
+        },
+        "is_hidden": {
+          "type": "boolean",
+          "display_name": "Hide this section"
+        },
+        "label": {
+          "type": "text",
+          "display_name": "Label",
+          "default_value": "Explore Destinations"
+        },
+        "target": {
+          "type": "multilink",
+          "display_name": "Target (Destinations Catalog)"
+        },
+        "style": {
+          "type": "option",
+          "display_name": "Style",
+          "default_value": "primary",
+          "options": [
+            {
+              "name": "Primary",
+              "value": "primary"
+            },
+            {
+              "name": "Secondary",
+              "value": "secondary"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "core_value",
+      "display_name": "core value",
+      "is_nestable": true,
+      "is_root": false,
+      "schema": {
+        "title": {
+          "type": "text",
+          "display_name": "Title",
+          "required": true
+        },
+        "description": {
+          "type": "textarea",
+          "display_name": "Description"
+        },
+        "icon": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "display_name": "Icon"
+        }
+      }
+    },
+    {
+      "name": "company_statistic",
+      "display_name": "company statistic",
+      "is_nestable": true,
+      "is_root": false,
+      "schema": {
+        "label": {
+          "type": "text",
+          "display_name": "Label",
+          "required": true
+        },
+        "value": {
+          "type": "text",
+          "display_name": "Value",
+          "required": true
+        },
+        "unit": {
+          "type": "text",
+          "display_name": "Unit"
+        }
+      }
+    },
+    {
+      "name": "milestone",
+      "display_name": "milestone",
+      "is_nestable": true,
+      "is_root": false,
+      "schema": {
+        "date": {
+          "type": "datetime",
+          "display_name": "Date",
+          "required": true
+        },
+        "title": {
+          "type": "text",
+          "display_name": "Title",
+          "required": true
+        },
+        "description": {
+          "type": "textarea",
+          "display_name": "Description"
+        },
+        "image": {
+          "type": "asset",
+          "filetypes": [
+            "images",
+            "videos"
+          ],
+          "display_name": "Image or video"
+        }
+      }
+    },
+    {
+      "name": "team_member",
+      "display_name": "team member",
+      "is_nestable": true,
+      "is_root": false,
+      "schema": {
+        "full_name": {
+          "type": "text",
+          "display_name": "Full name",
+          "required": true
+        },
+        "role": {
+          "type": "text",
+          "display_name": "Role"
+        },
+        "bio": {
+          "type": "textarea",
+          "display_name": "Short bio"
+        },
+        "photo": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "display_name": "Photo"
+        },
+        "profile_link": {
+          "type": "multilink",
+          "display_name": "External profile link"
+        }
+      }
+    },
+    {
+      "name": "safety_certification",
+      "display_name": "safety certification",
+      "is_nestable": true,
+      "is_root": false,
+      "schema": {
+        "name": {
+          "type": "text",
+          "display_name": "Name",
+          "required": true
+        },
+        "issuing_authority": {
+          "type": "text",
+          "display_name": "Issuing authority"
+        },
+        "issue_date": {
+          "type": "datetime",
+          "display_name": "Issue date",
+          "disable_time": true
+        },
+        "expiration_date": {
+          "type": "datetime",
+          "display_name": "Expiration date (leave empty if none)",
+          "disable_time": true
+        },
+        "badge": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "display_name": "Badge"
+        }
+      }
+    },
+    {
+      "name": "spaceport",
+      "display_name": "spaceport",
+      "is_nestable": true,
+      "is_root": false,
+      "schema": {
+        "name": {
+          "type": "text",
+          "display_name": "Name",
+          "required": true
+        },
+        "planet": {
+          "type": "text",
+          "display_name": "Planet",
+          "required": true
+        },
+        "city": {
+          "type": "text",
+          "display_name": "City"
+        },
+        "latitude": {
+          "type": "text",
+          "display_name": "Latitude (-90 to 90)",
+          "required": true
+        },
+        "longitude": {
+          "type": "text",
+          "display_name": "Longitude (-180 to 180)",
+          "required": true
+        },
+        "description": {
+          "type": "textarea",
+          "display_name": "Description"
+        },
+        "is_active": {
+          "type": "boolean",
+          "display_name": "Active",
+          "default_value": true
+        }
+      }
+    },
+    {
+      "name": "partner",
+      "display_name": "partner",
+      "is_nestable": true,
+      "is_root": false,
+      "schema": {
+        "name": {
+          "type": "text",
+          "display_name": "Name",
+          "required": true
+        },
+        "logo": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "display_name": "Logo"
+        },
+        "website": {
+          "type": "multilink",
+          "display_name": "Website"
+        },
+        "partnership_type": {
+          "type": "text",
+          "display_name": "Partnership type"
+        }
+      }
+    },
+    {
+      "name": "testimonial",
+      "display_name": "testimonial",
+      "is_nestable": true,
+      "is_root": false,
+      "schema": {
+        "traveler_name": {
+          "type": "text",
+          "display_name": "Traveler name",
+          "required": true
+        },
+        "destination": {
+          "type": "text",
+          "display_name": "Destination"
+        },
+        "rating": {
+          "type": "option",
+          "display_name": "Rating",
+          "options": [
+            {
+              "name": "1",
+              "value": "1"
+            },
+            {
+              "name": "2",
+              "value": "2"
+            },
+            {
+              "name": "3",
+              "value": "3"
+            },
+            {
+              "name": "4",
+              "value": "4"
+            },
+            {
+              "name": "5",
+              "value": "5"
+            }
+          ]
+        },
+        "comment": {
+          "type": "textarea",
+          "display_name": "Comment",
+          "required": true
+        },
+        "trip_date": {
+          "type": "datetime",
+          "display_name": "Trip date",
+          "disable_time": true
+        },
+        "is_approved": {
+          "type": "boolean",
+          "display_name": "Approved"
+        }
+      }
+    },
+    {
+      "name": "social_link",
+      "display_name": "social link",
+      "is_nestable": true,
+      "is_root": false,
+      "schema": {
+        "platform": {
+          "type": "text",
+          "display_name": "Platform",
+          "required": true
+        },
+        "url": {
+          "type": "multilink",
+          "display_name": "URL"
+        }
+      }
+    }
+  ]
+}

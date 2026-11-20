@@ -1,0 +1,87 @@
+/* Orbital style guide: tokens first, then base styles. */
+@import '@fontsource/space-grotesk/500.css';
+@import '@fontsource/space-grotesk/600.css';
+@import '@fontsource/space-grotesk/700.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
+@import './styles/tokens.css';
+
+html {
+	background: var(--color-void);
+	color: var(--color-text);
+}
+
+body {
+	margin: 0;
+	font-family: var(--font-body);
+	font-size: var(--text-md);
+	line-height: var(--lh-md);
+	background: var(--gradient-hero) fixed;
+	-webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+	font-family: var(--font-display);
+	letter-spacing: -0.02em;
+	margin: 0;
+}
+
+code,
+.data {
+	font-family: var(--font-data);
+	font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+	outline: 2px solid var(--color-ion);
+	outline-offset: 2px;
+}
+
+::selection {
+	background: var(--color-nebula-soft);
+}
+
+a {
+	color: var(--color-ion);
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+footer {
+	padding: var(--space-6) var(--gutter);
+	text-align: center;
+	font-size: var(--text-sm);
+	color: var(--color-text-secondary);
+}
+
+/* Blueprint blocks */
+.teaser,
+.grid,
+.feature {
+	max-width: var(--container-max);
+	margin-inline: auto;
+	padding: var(--space-5) var(--gutter);
+}
+
+.grid {
+	display: grid;
+	gap: var(--space-5);
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.site-nav--loading {
+	min-height: calc(var(--space-8) + 1px);
+}
