@@ -40,7 +40,7 @@ To add a content type: create the block in Storyblok, add a component in `src/st
 
 Because routing is catch-all, new pages like planets, booking and company are Storyblok stories, not React Router routes. Add explicit routes only for non-CMS behavior such as a booking form.
 
-The Storyblok content version comes from `STORYBLOK_VERSION` (`draft` or `published`, default `published`; see [src/storyblok/config.ts](src/storyblok/config.ts)). The Visual Editor is detected by its `_storyblok` query param and always gets drafts. Stories must be published in Storyblok before they show with `published`. Use `draft` with the space's preview token. The Visual Editor needs the app served over HTTPS and the space's Visual Editor default environment set to `https://localhost:5173/`. The `home` story needs real path `/`.
+The Storyblok content version comes from `STORYBLOK_VERSION` (`draft` or `published`, default `published`; see [src/storyblok/config.ts](src/storyblok/config.ts)). The Visual Editor is detected by its `_storyblok` query param and always gets drafts. Outside production, `?version=draft` or `?version=published` in the URL overrides it. When `VERCEL_ENV=production` the override is ignored and a `console.error` is logged. `VERCEL_ENV` reaches the client through `define` in `vite.config.ts`, so Vercel's "Automatically expose System Environment Variables" must be on. Stories must be published in Storyblok before they show with `published`. Use `draft` with the space's preview token. The Visual Editor needs the app served over HTTPS and the space's Visual Editor default environment set to `https://localhost:5173/`. The `home` story needs real path `/`.
 
 ## Deployment
 

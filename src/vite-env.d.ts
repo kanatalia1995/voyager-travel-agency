@@ -6,6 +6,8 @@ interface ImportMetaEnv {
 	readonly STORYBLOK_REGION?: string;
 	readonly STORYBLOK_VERSION?: 'draft' | 'published';
 	readonly STORYBLOK_API_BASE_URL?: string;
+	/** Vercel system variable: 'production' | 'preview' | 'development'. */
+	readonly VERCEL_ENV?: string;
 }
 
 interface ImportMeta {
