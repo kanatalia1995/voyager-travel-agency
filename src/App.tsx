@@ -1,13 +1,16 @@
-import { StoryblokComponent, useStoryblok } from '@storyblok/react';
-import { useParams } from 'react-router';
+import { StoryblokComponent } from '@storyblok/react';
+import { Navigate, useParams } from 'react-router';
 import { useLanguage } from './language';
-import { getStoryblokVersion } from './storyblok/config';
+import Loading from './components/Loading';
 import NavigationHeader from './storyblok/navigation/NavigationHeader';
+import { useStory } from './storyblok/useStory';
 import type { NavigationHeaderBlok } from './storyblok/types';
 
 /** Fetches the shared navigation story and renders it above every page. */
 function SiteNavigation({ language }: { language: string }) {
-	const story = useStoryblok('navigation', { version: getStoryblokVersion(), language: language || undefined });
+	const { story, error } = useStory('navigation', language);
+	// A missing header must not take the whole page down: render nothing instead of redirecting.
+	if (error) return null;
 	if (!story?.content) {
 		return <div className="site-nav site-nav--loading" aria-hidden="true" />;
 	}
@@ -15,15 +18,22 @@ function SiteNavigation({ language }: { language: string }) {
 }
 
 function PageContent({ slug, language }: { slug: string; language: string }) {
-	const story = useStoryblok(slug, { version: getStoryblokVersion(), language: language || undefined });
-	if (!story?.content) {
-		return <div>Loading...</div>;
+	const { story, error } = useStory(slug, language);
+	if (error) {
+		return <Navigate to="/error" replace state={{ status: error.status, from: slug }} />;
 	}
-	return <StoryblokComponent blok={story.content} />;
+	if (!story?.content) {
+		return <Loading />;
+	}
+	return (
+		<>
+			<StoryblokComponent blok={story.content} />
+			<footer>All rights reserved © {new Date().getFullYear()}</footer>
+		</>
+	);
 }
 
 export default function App() {
-	const currentYear = new Date().getFullYear();
 	const { '*': splat } = useParams();
 	const slug = splat || 'home';
 	const { language } = useLanguage();
@@ -35,7 +45,6 @@ export default function App() {
 			{/* `key` remounts on language change so Storyblok refetches the translated story. */}
 			{showSiteNavigation && <SiteNavigation key={`nav:${language}`} language={language} />}
 			<PageContent key={`${slug}:${language}`} slug={slug} language={language} />
-			<footer>All rights reserved © {currentYear}</footer>
 		</>
 	);
 }

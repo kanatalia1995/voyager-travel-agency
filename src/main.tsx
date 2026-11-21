@@ -1,9 +1,10 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router';
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router';
 
 import './index.css';
 import App from './App';
+import ErrorPage from './pages/ErrorPage';
 import { storyblokInit, apiPlugin } from '@storyblok/react';
 
 import Page from './storyblok/Page';
@@ -55,9 +56,12 @@ storyblokInit({
 	},
 });
 const router = createBrowserRouter([
+	{ path: '/error', Component: ErrorPage },
 	{
 		path: '/*',
 		Component: App,
+		// Anything that throws while rendering ends up on the error page too.
+		ErrorBoundary: () => <Navigate to="/error" replace state={{ status: 500 }} />,
 	},
 ]);
 const root = document.getElementById('root')!;
