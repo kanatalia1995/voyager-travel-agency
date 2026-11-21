@@ -52,3 +52,8 @@
 .error-page__action:hover {
 	box-shadow: var(--glow-ion);
 }
+
+.error-page--compact {
+	min-height: 0;
+	padding-block: var(--space-7);
+}

@@ -163,3 +163,16 @@ export interface NavigationHeaderBlok extends SbBlokData {
 	tabs?: NavTabBlok[];
 	languages?: NavLanguageBlok[];
 }
+
+export interface ErrorMessageBlok extends SbBlokData {
+	/** e.g. "404". Empty marks the default message used for any other failure. */
+	status_code?: string;
+	title?: string;
+	message?: string;
+	action_label?: string;
+	action_link?: StoryblokLink;
+}
+
+export interface ErrorPageBlok extends SbBlokData {
+	messages?: ErrorMessageBlok[];
+}

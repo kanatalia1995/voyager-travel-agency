@@ -1,5 +1,5 @@
 import { StoryblokComponent } from '@storyblok/react';
-import { Navigate, useParams } from 'react-router';
+import { Navigate, useLocation, useParams } from 'react-router';
 import { useLanguage } from './language';
 import Loading from './components/Loading';
 import NavigationHeader from './storyblok/navigation/NavigationHeader';
@@ -19,8 +19,10 @@ function SiteNavigation({ language }: { language: string }) {
 
 function PageContent({ slug, language }: { slug: string; language: string }) {
 	const { story, error } = useStory(slug, language);
+	const { search } = useLocation();
 	if (error) {
-		return <Navigate to="/error" replace state={{ status: error.status, from: slug }} />;
+		// Keep the query string so ?version=draft survives reloads of the error page.
+		return <Navigate to={{ pathname: '/error', search }} replace state={{ status: error.status, from: slug }} />;
 	}
 	if (!story?.content) {
 		return <Loading />;
