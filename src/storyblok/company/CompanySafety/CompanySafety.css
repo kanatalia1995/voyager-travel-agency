@@ -1,0 +1,12 @@
+/* Certifications */
+.co-cert {
+	display: flex;
+	gap: var(--space-4);
+	align-items: center;
+}
+
+.co-cert img {
+	width: var(--space-8);
+	height: var(--space-8);
+	object-fit: contain;
+}

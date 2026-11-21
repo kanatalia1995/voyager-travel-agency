@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router';
 
 import './index.css';
-import App from './App';
+import App from './app';
 import ErrorPage from './pages/error-page/ErrorPage';
 import RenderErrorRedirect from './pages/error-page/RenderErrorRedirect';
 import ErrorPageBlock from './pages/error-page/ErrorPageBlock';

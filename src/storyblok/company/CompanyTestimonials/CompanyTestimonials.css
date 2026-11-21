@@ -1,0 +1,33 @@
+/* Testimonials */
+.co-carousel__controls {
+	display: flex;
+	align-items: center;
+	gap: var(--space-3);
+	margin-top: var(--space-4);
+}
+
+.co-carousel__controls button {
+	min-width: 44px;
+	min-height: 44px;
+	border-radius: var(--radius-md);
+	border: 1px solid var(--color-border-strong);
+	background: transparent;
+	color: var(--color-text);
+	font: inherit;
+	cursor: pointer;
+}
+
+.co-carousel__controls button:hover {
+	border-color: var(--color-ion);
+}
+
+.co-quote {
+	font-size: var(--text-lg);
+	line-height: var(--lh-lg);
+	margin: 0;
+}
+
+.co-stars {
+	color: var(--color-solar);
+	letter-spacing: 0.1em;
+}

@@ -1,0 +1,68 @@
+/* Spaceport map */
+.co-tabs {
+	display: flex;
+	gap: var(--space-2);
+	flex-wrap: wrap;
+	margin-bottom: var(--space-4);
+}
+
+.co-tab {
+	min-height: 44px;
+	padding: var(--space-2) var(--space-4);
+	border-radius: var(--radius-full);
+	border: 1px solid var(--color-border-strong);
+	background: transparent;
+	color: var(--color-text-secondary);
+	font: inherit;
+	cursor: pointer;
+}
+
+.co-tab[aria-pressed='true'] {
+	border-color: var(--color-nebula);
+	color: var(--color-text);
+	box-shadow: var(--glow-nebula);
+}
+
+.co-map {
+	position: relative;
+	aspect-ratio: 2 / 1;
+	background:
+		linear-gradient(var(--color-border) 1px, transparent 1px) 0 0 / 12.5% 25%,
+		linear-gradient(90deg, var(--color-border) 1px, transparent 1px) 0 0 / 12.5% 25%,
+		var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-lg);
+	margin-bottom: var(--space-4);
+}
+
+.co-marker {
+	position: absolute;
+	transform: translate(-50%, -50%);
+	width: 44px;
+	height: 44px;
+	border: 0;
+	background: transparent;
+	cursor: pointer;
+	display: grid;
+	place-items: center;
+}
+
+.co-marker::after {
+	content: '';
+	width: var(--space-4);
+	height: var(--space-4);
+	border-radius: var(--radius-full);
+	background: var(--color-ion);
+	box-shadow: var(--glow-ion);
+}
+
+.co-marker[aria-pressed='true']::after {
+	background: var(--color-nebula);
+	box-shadow: var(--glow-nebula);
+}
+
+.co-coords {
+	font-family: var(--font-data);
+	font-size: var(--text-data);
+	color: var(--color-text-secondary);
+}

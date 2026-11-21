@@ -1,0 +1,14 @@
+/* Partners */
+
+.co-partner {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 88px;
+}
+
+.co-partner img {
+	max-width: 100%;
+	max-height: var(--space-7);
+	object-fit: contain;
+}
