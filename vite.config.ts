@@ -5,7 +5,10 @@ import { fileURLToPath } from 'node:url';
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
-	const env = loadEnv(mode, fileURLToPath(new URL('.', import.meta.url)), 'STORYBLOK_');
+	const env = loadEnv(mode, fileURLToPath(new URL('.', import.meta.url)), [
+		'STORYBLOK_',
+		'VERCEL_ENV',
+	]);
 	return {
 		plugins: [react(), mkcert()],
 		define: {
@@ -13,6 +16,7 @@ export default defineConfig(({ mode }) => {
 				env.STORYBLOK_DELIVERY_API_TOKEN,
 			),
 			'import.meta.env.STORYBLOK_REGION': JSON.stringify(env.STORYBLOK_REGION),
+			'import.meta.env.VERCEL_ENV': JSON.stringify(env.VERCEL_ENV),
 			'import.meta.env.STORYBLOK_VERSION': JSON.stringify(env.STORYBLOK_VERSION),
 			'import.meta.env.STORYBLOK_API_BASE_URL': JSON.stringify(
 				env.STORYBLOK_API_BASE_URL,
