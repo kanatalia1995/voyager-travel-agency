@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import Loading from '../../../components/Loading';
-import { useLanguage } from '../../../language';
+import { useLanguage } from '../../../context/language';
 import { useStory } from '../../../storyblok/useStory';
 import type { ErrorPageBlok } from '../../../storyblok/types';
 import ErrorView from '../ErrorView';

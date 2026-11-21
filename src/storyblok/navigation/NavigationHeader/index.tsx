@@ -4,7 +4,7 @@ import { storyblokEditable } from '@storyblok/react';
 import SmartLink from '../../shared/SmartLink';
 import LanguageSelect from '../LanguageSelect';
 import { asArray, linkUrl } from '../../shared/helpers';
-import { useLanguage } from '../../../language';
+import { useLanguage } from '../../../context/language';
 import type { NavigationHeaderBlok } from '../../types';
 import './NavigationHeader.css';
 

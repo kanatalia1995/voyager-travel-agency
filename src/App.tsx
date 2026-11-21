@@ -1,5 +1,5 @@
 import { useParams } from 'react-router';
-import { useLanguage } from './language';
+import { useLanguage } from './context/language';
 import PageContent from './pages/PageContent';
 import SiteNavigation from './pages/SiteNavigation';
 

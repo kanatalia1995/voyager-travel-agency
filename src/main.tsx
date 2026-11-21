@@ -14,7 +14,7 @@ import Teaser from './storyblok/Teaser';
 import Feature from './storyblok/Feature';
 import Grid from './storyblok/Grid';
 import NavigationHeader from './storyblok/navigation/NavigationHeader';
-import { LanguageProvider } from './language';
+import { LanguageProvider } from './context/language';
 import CompanyHero from './storyblok/company/CompanyHero';
 import CompanyMission from './storyblok/company/CompanyMission';
 import CompanyKeyFigures from './storyblok/company/CompanyKeyFigures';
