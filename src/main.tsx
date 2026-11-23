@@ -14,7 +14,7 @@ import Teaser from './storyblok/Teaser';
 import Feature from './storyblok/Feature';
 import Grid from './storyblok/Grid';
 import NavigationHeader from './storyblok/navigation/NavigationHeader';
-import { LanguageProvider } from './context/language';
+import { LanguageLayout } from './context/language';
 import CompanyHero from './storyblok/company/CompanyHero';
 import CompanyMission from './storyblok/company/CompanyMission';
 import CompanyKeyFigures from './storyblok/company/CompanyKeyFigures';
@@ -59,20 +59,24 @@ storyblokInit({
 	},
 });
 const router = createBrowserRouter([
-	{ path: '/error', Component: ErrorPage },
 	{
-		path: '/*',
-		Component: App,
-		// Anything that throws while rendering ends up on the error page too.
-		ErrorBoundary: RenderErrorRedirect,
+		// Owns the language (from the URL) for every route below.
+		Component: LanguageLayout,
+		children: [
+			{ path: '/error', Component: ErrorPage },
+			{
+				path: '/*',
+				Component: App,
+				// Anything that throws while rendering ends up on the error page too.
+				ErrorBoundary: RenderErrorRedirect,
+			},
+		],
 	},
 ]);
 const root = document.getElementById('root')!;
 
 createRoot(root).render(
 	<StrictMode>
-		<LanguageProvider>
-			<RouterProvider router={router} />
-		</LanguageProvider>
+		<RouterProvider router={router} />
 	</StrictMode>,
 );

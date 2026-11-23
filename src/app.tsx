@@ -1,12 +1,18 @@
-import { useParams } from 'react-router';
+import { Navigate, useLocation } from 'react-router';
 import { useLanguage } from './context/language';
 import PageContent from './pages/PageContent';
 import SiteNavigation from './pages/SiteNavigation';
 
 export default function App() {
-	const { '*': splat } = useParams();
-	const slug = splat || 'home';
-	const { language } = useLanguage();
+	const { pathname, search, hash } = useLocation();
+	const { language, pathWithoutLanguage, localizePath } = useLanguage();
+
+	// A language is set (e.g. Spanish) but the URL has no prefix: send the visitor to /es/...
+	if (language && pathWithoutLanguage === pathname) {
+		return <Navigate to={{ pathname: localizePath(pathname), search, hash }} replace />;
+	}
+
+	const slug = pathWithoutLanguage.replace(/^\/+|\/+$/g, '') || 'home';
 	// The navigation story renders its own header (so it can be edited in the Visual Editor).
 	const showSiteNavigation = slug !== 'navigation';
 

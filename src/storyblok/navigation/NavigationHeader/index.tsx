@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router';
 import { storyblokEditable } from '@storyblok/react';
 import SmartLink from '../../shared/SmartLink';
 import LanguageSelect from '../LanguageSelect';
@@ -12,8 +11,7 @@ const normalize = (path: string) => (path.length > 1 ? path.replace(/\/$/, '') :
 
 /** Site-wide header: company name, configurable tabs and a language switcher. Sticks to the top on scroll. */
 export default function NavigationHeader({ blok }: { blok: NavigationHeaderBlok }) {
-	const { pathname } = useLocation();
-	const { language, setLanguage } = useLanguage();
+	const { language, setLanguage, pathWithoutLanguage } = useLanguage();
 	const [menuOpen, setMenuOpen] = useState(false);
 
 	const tabs = asArray(blok.tabs).filter((tab) => tab.label && linkUrl(tab.link));
@@ -41,7 +39,7 @@ export default function NavigationHeader({ blok }: { blok: NavigationHeaderBlok 
 					<ul id="site-nav-menu" className={menuOpen ? 'is-open' : undefined}>
 						{tabs.map((tab) => {
 							const url = linkUrl(tab.link);
-							const current = !tab.open_in_new_tab && normalize(pathname) === normalize(url);
+							const current = !tab.open_in_new_tab && normalize(pathWithoutLanguage) === normalize(url);
 							return (
 								<li key={tab._uid} {...storyblokEditable(tab)}>
 									<SmartLink
