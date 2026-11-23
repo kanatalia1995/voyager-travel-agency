@@ -19,7 +19,7 @@ npm run preview   # serve the built dist/
 npm run lint      # eslint .
 ```
 
-There is no test runner configured.
+`npm run build` first runs `npm run sitemap` ([scripts/generate-sitemap.mjs](scripts/generate-sitemap.mjs)), which writes `public/sitemap.xml` from Storyblok's Links API (published stories only; `navigation` and `error-page` are excluded; `home` maps to `/`). The same script writes `public/robots.txt`: crawlable with a `Sitemap:` line when `VERCEL_ENV` is `production` (or unset), `Disallow: /` on Vercel preview deployments. It uses `SITE_URL`, else Vercel's production domain, and only warns (never fails the build) if the API call fails. `npm test` runs the sitemap self-check with Node's built-in runner; there is no other test runner.
 
 ## Environment
 

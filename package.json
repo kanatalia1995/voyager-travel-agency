@@ -8,10 +8,13 @@
 	},
 	"scripts": {
 		"dev": "vite",
+		"sitemap": "node scripts/generate-sitemap.mjs",
+		"prebuild": "npm run sitemap",
 		"build": "tsc --noEmit && vite build",
 		"typecheck": "tsc --noEmit",
 		"lint": "eslint .",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"test": "node --test scripts/generate-sitemap.test.mjs"
 	},
 	"dependencies": {
 		"@fontsource/inter": "^5.3.0",
