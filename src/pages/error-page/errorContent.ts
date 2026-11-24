@@ -1,4 +1,4 @@
-import { asArray, linkUrl } from '../../storyblok/shared/helpers';
+import { asArray, linkUrl } from '../../helpers/helpers';
 import type { ErrorMessageBlok } from '../../storyblok/types';
 
 export interface ErrorContent {

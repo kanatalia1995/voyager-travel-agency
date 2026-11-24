@@ -1,7 +1,7 @@
 import { Navigate, useLocation } from 'react-router';
 import { useLanguage } from './context/language';
-import PageContent from './pages/PageContent';
-import SiteNavigation from './pages/SiteNavigation';
+import PageContent from './pages/PageContent/PageContent';
+import SiteNavigation from './pages/SiteNavigation/SiteNavigation';
 
 export default function App() {
 	const { pathname, search, hash } = useLocation();

@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router';
 import { getStoryblokApi } from '@storyblok/react';
-import Loading from '../components/Loading';
+import Loading from '../components/Loading/Loading';
 
 interface LanguageContextValue {
 	/** Storyblok language code; '' is the space's default language. */
