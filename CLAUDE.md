@@ -39,6 +39,8 @@ This is a client-rendered SPA. A single catch-all route renders every CMS page.
 
 Component convention: every React component lives in its own folder named after it, with the component in `index.tsx` and its styles in `<ComponentName>.css` next to it (e.g. `Loading/index.tsx` + `Loading/Loading.css`). Imports use the folder (`import Loading from './components/Loading'`). Shared Company Overview styles live in `company/Section/Section.css`.
 
+Planet pages: the `planet` content type (stories under the `planets` folder, e.g. `planets/mars` at `/planets/mars`) renders through [Planet](src/storyblok/planet/Planet/index.tsx), whose `hero` field holds a `planet-hero-banner` block ([PlanetHeroBanner](src/storyblok/planet/PlanetHeroBanner/index.tsx): image or looping video, name, description and `agency_cta` buttons rendered by [AgencyCta](src/storyblok/planet/AgencyCta/index.tsx)). Note the block name is hyphenated in Storyblok (`planet-hero-banner`).
+
 To add a content type: create the block in Storyblok, add a component in `src/storyblok/`, and **register it in `src/main.tsx`**. An unregistered block silently fails to render.
 
 Because routing is catch-all, new pages like planets, booking and company are Storyblok stories, not React Router routes. Add explicit routes only for non-CMS behavior such as a booking form.

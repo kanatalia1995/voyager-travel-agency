@@ -176,3 +176,21 @@ export interface ErrorMessageBlok extends SbBlokData {
 export interface ErrorPageBlok extends SbBlokData {
 	messages?: ErrorMessageBlok[];
 }
+
+export interface AgencyCtaBlok extends SbBlokData {
+	label?: string;
+	type?: 'primary' | 'secondary';
+	link?: StoryblokLink;
+}
+
+export interface PlanetHeroBannerBlok extends SbBlokData {
+	/** Image or video. */
+	planet_hero_image?: StoryblokAsset;
+	planet_name?: string;
+	planet_description?: string;
+	cta?: AgencyCtaBlok[];
+}
+
+export interface PlanetBlok extends SbBlokData {
+	hero?: PlanetHeroBannerBlok[];
+}

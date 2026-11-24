@@ -16,7 +16,13 @@ export default function PageContent({ slug, language }: { slug: string; language
 	return (
 		<>
 			<StoryblokComponent blok={story.content} />
-			<footer>All rights reserved © {new Date().getFullYear()}</footer>
+			<footer>
+				<span>All rights reserved © {new Date().getFullYear()}</span>
+				{/* Plain link on purpose: sitemap.xml is a static file, not a route of the app. */}
+				<a href="/sitemap.xml" target="_blank" rel="noopener noreferrer">
+					Sitemap
+				</a>
+			</footer>
 		</>
 	);
 }

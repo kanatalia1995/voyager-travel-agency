@@ -61,10 +61,23 @@ a {
 }
 
 footer {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: var(--space-2) var(--space-5);
 	padding: var(--space-6) var(--gutter);
 	text-align: center;
 	font-size: var(--text-sm);
 	color: var(--color-text-secondary);
+}
+
+footer a {
+	color: inherit;
+	text-decoration: underline;
+}
+
+footer a:hover {
+	color: var(--color-text);
 }
 
 /* Blueprint blocks */
