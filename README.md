@@ -1,79 +1,114 @@
-# Storyblok Core Space Blueprint: React
+# Voyager: Interplanetary Travel Agency
 
-Integrate [React](https://react.dev/) with [Storyblok](http://www.storyblok.com) as a headless CMS.
+A website for an interplanetary travel agency. Visitors browse the planets they can travel to, read about each destination, learn about the company, and (soon) book a trip. Every page, label and image is content in [Storyblok](https://www.storyblok.com), so editors can change the site, in every language, without touching code.
 
-This blueprint is ideal for kickstarting new Storyblok and React projects. What's inside:
+## What is on the site
 
-- Pre-configured default blocks: `page`, `teaser`, `grid`, and `feature`.
-- Support for the Visual Editor's live preview.
-- Dynamic routing to fetch and render new stories automatically.
-- Minimal styling.
+| Page | Path | Status |
+| --- | --- | --- |
+| Home: "Where will you go next?" with the planets | `/` | Built |
+| Planet pages, e.g. Mars with a video hero | `/planets/mars` | Built |
+| Company Overview: mission, story, team, safety, spaceports, partners, testimonials, contact | `/company-overview` | Built |
+| Booking | `/booking` | Placeholder ("Working on it!") |
+| Error page ("Lost in space") | `/error` | Built, shown for missing pages and failures |
+| Sitemap and robots | `/sitemap.xml`, `/robots.txt` | Generated at build time |
 
-> [!TIP]
-> Follow our [React guide](https://storyblok.com/docs/guides/react) for a step-by-step walkthrough and learn more about Storyblok's range of features, including rich text rendering, custom content modeling, and internationalization. See the [@storyblok/react package reference](https://storyblok.com/docs/packages/storyblok-react) for further information.
+Site-wide: a fixed navigation header (company name, logo, tabs and a language picker) managed in Storyblok, and a footer with a link to the sitemap. The default language has clean URLs and every other language has a prefix, for example `/es/planets/mars`.
 
----
+## Tech stack
 
-[![Open in GitHub Codespaces](https://img.shields.io/badge/Open%20in%20GitHub%20Codespaces-dad4ff.svg?style=for-the-badge&logo=GitHub&logoColor=181717&labelColor=ffffff&color=dad4ff)](https://github.com/codespaces/new?skip_quickstart=true&machine=basicLinux32gb&repo=962644002&ref=main&geo=EuropeWest)
-[![Try Storyblok free](https://img.shields.io/badge/Try%20Storyblok-dad4ff.svg?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0ibm9uZSI+PHBhdGggZD0iTTQuNzA3IDIuNTM4aDIyLjUyOXYyMy41ODdINC43MDd6IiBzdHlsZT0iZmlsbDojZmZmIi8+PHBhdGggZmlsbD0iIzFmMWYxZiIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNMS43NDMgMi42MDFBMi41OTcgMi41OTcgMCAwIDEgNC4zMzUgMGgyMy4zM2EyLjU5NyAyLjU5NyAwIDAgMSAyLjU5MiAyLjYwMXYyMy40MTFhMi41OTcgMi41OTcgMCAwIDEtMi41OTIgMi42MDJIMTIuNTQ4bC0zLjg3MiAzLjIwOGEuNzcuNzcgMCAwIDEtMS4yNjEtLjU5N3YtMi42MTFoLTMuMDhhMi41OTcgMi41OTcgMCAwIDEtMi41OTItMi42MDJabTUuNjcgMi4xMjdoMTIuNDYyYzIuNjkxIDAgNC44NzMgMi4xOSA0Ljg3MyA0Ljg5IDAgMi4xNjQtMS40IDQtMy4zNDIgNC42NDRhNC44ODcgNC44ODcgMCAwIDEgMy45OSA0LjgxYzAgMi43MDEtMi4xODEgNC44OS00Ljg3MyA0Ljg5SDcuNDEzdi05LjQ1NFptMTAuMzY0IDQuNEgxMS45NXYyLjkzNGg1LjgyOGMuODA4IDAgMS40NjItLjY1NiAxLjQ2Mi0xLjQ2NyAwLS44MS0uNjU0LTEuNDY3LTEuNDYyLTEuNDY3em0tNS44MjggNi41Mmg2LjMxNGMuODk3IDAgMS42MjQuNzMgMS42MjQgMS42MyAwIC45MDEtLjcyNyAxLjYzLTEuNjI0IDEuNjNoLTYuMzE0eiIgY2xpcC1ydWxlPSJldmVub2RkIiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjEuNTE3NzUiLz48L3N2Zz4K&labelColor=ffffff)](https://app.storyblok.com/#/signup)
-[![Join the Storyblok Discord community](https://img.shields.io/discord/700316478792138842?style=for-the-badge&logo=discord&label=Join%20our%20community&labelColor=ffffff&color=dad4ff)](https://storyblok.com/join-discord)
+React 19, TypeScript (strict), Vite, React Router, Storyblok (headless CMS) through `@storyblok/react`, deployed on Vercel. Node 24 is required.
 
-## Get Started
+## Getting started
 
-**No Storyblok account yet? [Sign up now](https://app.storyblok.com/#/signup?utm_source=docs) to experience a 14-day free trial of all features and enjoy our completely free Starter plan.**
-
-1. Create an empty new Storyblok space
-2. Create a new repository based on this template
-3. Open the project on your device
-4. Install dependencies
+You need Node 24 (`nvm use 24`) and a Storyblok space with the content model described below.
 
 ```sh
+git clone https://github.com/kanatalia1995/voyager-travel-agency.git
+cd voyager-travel-agency
 npm install
+cp .env.example .env   # then fill in the values
+npm run dev            # https://localhost:5173
 ```
 
-### Authentication
+The dev server runs over HTTPS (`vite-plugin-mkcert`) because the Storyblok Visual Editor requires it.
 
-In the root of the project, create a `.env` file to store the Storyblok access token:
+### Environment variables
 
-```sh
-STORYBLOK_DELIVERY_API_TOKEN=<REPLACE_WITH_YOUR_TOKEN>
+| Variable | Purpose |
+| --- | --- |
+| `STORYBLOK_DELIVERY_API_TOKEN` | Storyblok access token. Use the preview token to see drafts, or a public token for published-only sites. |
+| `STORYBLOK_REGION` | Space region: `eu` (default), `us`, `ca`, `ap` or `cn`. |
+| `STORYBLOK_VERSION` | `draft` or `published` (default). Which content the site shows. The Visual Editor always gets drafts. |
+| `SITE_URL` | Public site URL used in `sitemap.xml` and `robots.txt`. Defaults to Vercel's production domain. |
+| `STORYBLOK_API_BASE_URL` | Optional API endpoint override. |
+
+Outside production you can also add `?version=draft` or `?version=published` to any URL. On Vercel production (`VERCEL_ENV=production`) this is ignored and a console error is logged.
+
+### Commands
+
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Dev server with hot reload |
+| `npm run build` | Generates the sitemap, typechecks, then builds to `dist/` |
+| `npm run preview` | Serves the built site |
+| `npm run typecheck` | `tsc --noEmit` |
+| `npm run lint` | ESLint |
+| `npm run sitemap` | Writes `public/sitemap.xml` and `public/robots.txt` |
+| `npm test` | Self-check for the sitemap and robots generator |
+
+## How it works
+
+- **One route for all content.** Every story in Storyblok is rendered by a catch-all route. The URL slug is the story slug (`/` is the `home` story). Adding a page means creating a story, not writing a route.
+- **Blocks map to components.** Each Storyblok block has a React component, registered by name in [src/main.tsx](src/main.tsx). An unregistered block does not render, so register every new one.
+- **Languages live in the URL.** The space's configured languages are read from Storyblok. If a non-default language is remembered, a plain URL redirects to its prefixed form. Internal links keep the prefix automatically.
+- **Loading and errors.** A planet animation shows while content loads. A failed or missing page redirects to `/error`, whose text comes from the `error-page` story in the current language, with bundled English text as a fallback if Storyblok is unavailable.
+- **SEO files.** `npm run build` writes `sitemap.xml` from Storyblok's published stories (configuration stories excluded) and a `robots.txt` that allows production and blocks Vercel preview deployments.
+
+### Content model in Storyblok
+
+| Story or type | Blocks |
+| --- | --- |
+| `navigation` story (type `navigation_header`) | `nav_tab`, `nav_language` |
+| `error-page` story (type `error_page`) | `error_message` |
+| Pages (type `page`) | `planets_hero` with `planet_cta`, `company_*` sections, `core_value`, `grid`, `teaser`, `feature` |
+| Planet pages (type `planet`, under `planets/`) | `planet-hero-banner` with `agency_cta` |
+
+Text fields are translatable. Schemas for the Company Overview blocks are in [storyblok/company-overview-components.json](storyblok/company-overview-components.json).
+
+### Visual Editor setup
+
+1. In Storyblok, go to Settings, then Visual Editor, and set the default environment to `https://localhost:5173/`.
+2. Open the `home` story, click Config, and set its real path to `/`.
+3. For a deployed preview, use its URL as the environment. Vercel must not require a login for it (see below).
+
+## Project structure
+
+```
+src/
+  app.tsx, main.tsx        entry point, block registry and routes
+  components/              generic UI (Loading)
+  pages/                   page-level pieces (PageContent, SiteNavigation, error-page/)
+  storyblok/               one folder per Storyblok block component, plus types.ts
+  context/language.tsx     language from the URL
+  hooks/                   useStory
+  helpers/                 helpers and Storyblok version config
+  styles/tokens.css        Orbital design tokens
+scripts/                   sitemap and robots generator
+storyblok/                 block schemas
 ```
 
-> [!IMPORTANT]
-> Copy your space's preview access token from **Settings** > **Access Tokens**.
-> Learn more about Storyblok [access tokens](https://www.storyblok.com/docs/concepts/access-tokens).
+Every component lives in its own folder as `Name/Name.tsx` with `Name/Name.css` beside it. Styling uses the Orbital design tokens in [src/styles/tokens.css](src/styles/tokens.css) (dark theme, Space Grotesk, Inter and JetBrains Mono); use the tokens instead of raw values.
 
-### Connect the Visual Editor
+## Deployment
 
-To render a preview of the local project in the Visual Editor, follow these steps:
+The site is deployed on Vercel from this repository ([vercel.json](vercel.json): Vite build, output `dist`, all paths rewritten to `index.html`). Branches: `main` for production and `develop` for previews.
 
-1. Navigate to **Settings > Visual Editor**.
-2. Set the default environment to `https://localhost:5173/`.
-3. Save.
-4. Open the `home` story.
-5. Click **Config**.
-6. Type `/` in the **Real path**.
+- Set `STORYBLOK_DELIVERY_API_TOKEN`, `STORYBLOK_REGION` and `STORYBLOK_VERSION` for each Vercel environment. Previews need their own copy of the variables.
+- Turn on "Automatically expose System Environment Variables" so `VERCEL_ENV` and the production domain reach the build. They decide the `robots.txt` rules and the production block on `?version`.
+- Vercel protects preview deployments with a login by default, which also stops the Storyblok Visual Editor from showing them in a frame. To use a preview in the editor, disable Vercel Authentication for previews (Settings, Deployment Protection) or use an unprotected domain.
+- Stories must be published in Storyblok to appear on a `published` site and in the sitemap.
 
-Run the development server:
+## Working with Claude Code
 
-```sh
-npm run dev
-```
-
-> [!IMPORTANT]
-> To connect the Storyblok Visual Editor, the local project must run over HTTPS. Learn more in the [Visual Editor concept](https://www.storyblok.com/docs/concepts/visual-editor#local-development-via-https). See the [Visual Preview part of the React guide](https://storyblok.com/docs/guides/react/visual-preview) for detailed instructions.
-
-Back in Storyblok, open the **Home** story to start editing.
-
-Happy building!
-
-## Resources
-
-- To learn more about what you can do with Storyblok, visit [our documentation and learning hub](https://www.storyblok.com/docs).
-- To learn more about the integration between Storyblok and React, check our [dedicated developer tutorials](https://www.storyblok.com/tutorials?technologies=react).
-- To learn more about React, check the [official documentation](https://react.dev/).
-
-### Support
-
-- Have questions, need help, want to chat with other users? [Join our Discord community](https://storyblok.com/join-discord).
-- Visit the Storyblok [Help Center](https://support.storyblok.com/hc/en-us).
+[CLAUDE.md](CLAUDE.md) holds the architecture notes and conventions for Claude Code. [.mcp.json](.mcp.json) and [.claude/](.claude/) configure the Storyblok, GitHub, Playwright and Chrome DevTools servers, the plugins and the project skills.
