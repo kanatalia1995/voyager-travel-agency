@@ -26,9 +26,12 @@ import CompanyPartners from './storyblok/company/CompanyPartners';
 import CompanyTestimonials from './storyblok/company/CompanyTestimonials';
 import CompanyContact from './storyblok/company/CompanyContact';
 import CompanyCta from './storyblok/company/CompanyCta';
+import CoreValue from './storyblok/company/CoreValue';
 import Planet from './storyblok/planet/Planet';
 import PlanetHeroBanner from './storyblok/planet/PlanetHeroBanner';
 import AgencyCta from './storyblok/planet/AgencyCta';
+import PlanetsHero from './storyblok/planet/PlanetsHero';
+import PlanetCta from './storyblok/planet/PlanetCta';
 
 storyblokInit({
 	accessToken: import.meta.env.STORYBLOK_DELIVERY_API_TOKEN,
@@ -59,9 +62,12 @@ storyblokInit({
 		company_testimonials: CompanyTestimonials,
 		company_contact: CompanyContact,
 		company_cta: CompanyCta,
+		core_value: CoreValue,
 		planet: Planet,
 		'planet-hero-banner': PlanetHeroBanner,
 		agency_cta: AgencyCta,
+		planets_hero: PlanetsHero,
+		planet_cta: PlanetCta,
 	},
 });
 const router = createBrowserRouter([

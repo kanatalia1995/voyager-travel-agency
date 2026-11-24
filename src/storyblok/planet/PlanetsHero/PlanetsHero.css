@@ -1,0 +1,72 @@
+.planets-hero {
+	position: relative;
+	isolation: isolate;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: var(--space-8);
+	min-height: calc(100dvh - var(--space-8));
+	max-width: var(--container-max);
+	margin: 0 auto;
+	padding: var(--space-8) var(--gutter);
+}
+
+/* Static starfield behind the content. */
+.planets-hero::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	opacity: 0.85;
+	background-image:
+		radial-gradient(2px 2px at 8% 14%, var(--color-text) 40%, transparent 60%),
+		radial-gradient(2px 2px at 22% 62%, var(--color-text) 40%, transparent 60%),
+		radial-gradient(3px 3px at 31% 22%, var(--color-text) 40%, transparent 60%),
+		radial-gradient(2px 2px at 47% 8%, var(--color-text) 40%, transparent 60%),
+		radial-gradient(2px 2px at 58% 78%, var(--color-text) 40%, transparent 60%),
+		radial-gradient(3px 3px at 66% 30%, var(--color-text) 40%, transparent 60%),
+		radial-gradient(2px 2px at 74% 88%, var(--color-text) 40%, transparent 60%),
+		radial-gradient(2px 2px at 86% 16%, var(--color-text) 40%, transparent 60%),
+		radial-gradient(3px 3px at 92% 54%, var(--color-text) 40%, transparent 60%),
+		radial-gradient(2px 2px at 14% 90%, var(--color-text) 40%, transparent 60%),
+		radial-gradient(2px 2px at 40% 94%, var(--color-text) 40%, transparent 60%),
+		radial-gradient(2px 2px at 4% 46%, var(--color-text) 40%, transparent 60%);
+	pointer-events: none;
+}
+
+.planets-hero__head {
+	text-align: center;
+}
+
+.planets-hero__eyebrow {
+	margin: 0 0 var(--space-3);
+	font-size: var(--text-xs);
+	line-height: var(--lh-xs);
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+	color: var(--color-ion);
+}
+
+.planets-hero h1 {
+	font-size: var(--text-h1);
+	line-height: var(--lh-h1);
+	font-weight: 700;
+}
+
+.planets-hero__cutline {
+	margin: var(--space-3) 0 0;
+	font-size: var(--text-md);
+	line-height: var(--lh-md);
+	color: var(--color-text-secondary);
+}
+
+.planets-hero__list {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	justify-items: center;
+	gap: var(--space-7) var(--space-5);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}

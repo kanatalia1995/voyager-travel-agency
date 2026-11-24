@@ -194,3 +194,21 @@ export interface PlanetHeroBannerBlok extends SbBlokData {
 export interface PlanetBlok extends SbBlokData {
 	hero?: PlanetHeroBannerBlok[];
 }
+
+export interface PlanetCtaBlok extends SbBlokData {
+	planet_name?: string;
+	/** Image or video. */
+	planet_image?: StoryblokAsset;
+	/** Markdown field; rendered as plain text. */
+	planet_description?: string;
+	planet_link?: StoryblokLink;
+}
+
+export interface PlanetsHeroBlok extends SbBlokData {
+	/** Small line above the title, e.g. "Destinations 2087". */
+	subtitle?: string;
+	title?: string;
+	/** Hint under the title, e.g. "Tap a planet to start your journey." */
+	helper_cutline?: string;
+	planet_links?: PlanetCtaBlok[];
+}

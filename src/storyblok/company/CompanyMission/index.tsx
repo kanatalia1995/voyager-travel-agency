@@ -1,4 +1,4 @@
-import { storyblokEditable } from '@storyblok/react';
+import { StoryblokComponent } from '@storyblok/react';
 import { Section } from '../Section';
 import { asArray } from '../../shared/helpers';
 import type { MissionBlok } from '../../types';
@@ -26,12 +26,8 @@ export default function CompanyMission({ blok }: { blok: MissionBlok }) {
 			{values.length > 0 && (
 				<ul className="co-grid">
 					{values.map((value) => (
-						<li key={value._uid} {...storyblokEditable(value)} className="co-card">
-							{value.icon?.filename && (
-								<img src={value.icon.filename} alt="" width="40" height="40" />
-							)}
-							<h3>{value.title}</h3>
-							{value.description && <p>{value.description}</p>}
+						<li key={value._uid}>
+							<StoryblokComponent blok={value} />
 						</li>
 					))}
 				</ul>
