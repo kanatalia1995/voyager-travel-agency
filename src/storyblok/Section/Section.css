@@ -1,0 +1,124 @@
+/* Company Overview sections. Tokens only; see src/styles/tokens.css. */
+.co-section {
+	max-width: var(--container-max);
+	margin: 0 auto;
+	padding: var(--section-gap) var(--gutter) 0;
+}
+
+.co-section__head {
+	margin-bottom: var(--space-5);
+}
+
+.co-section h2 {
+	font-size: var(--text-h2);
+	line-height: var(--lh-h2);
+	font-weight: 600;
+}
+
+.co-section__subtitle {
+	margin: var(--space-4) 0 0;
+	max-width: 68ch;
+	font-size: var(--text-lg);
+	line-height: var(--lh-lg);
+	color: var(--color-text-secondary);
+}
+
+.co-section:last-of-type {
+	padding-bottom: var(--section-gap);
+}
+
+.co-card {
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-lg);
+	padding: var(--space-4);
+	transition: background var(--duration-base) var(--ease-orbit);
+}
+
+.co-card:hover {
+	background: var(--color-surface-raised);
+}
+
+@media (min-width: 640px) {
+	.co-card {
+		padding: var(--space-5);
+	}
+}
+
+.co-card h3 {
+	font-size: var(--text-h4);
+	line-height: var(--lh-h4);
+	font-weight: 500;
+}
+
+.co-card p {
+	margin: var(--space-2) 0 0;
+	color: var(--color-text-secondary);
+	max-width: 68ch;
+}
+
+.co-grid {
+	display: grid;
+	gap: var(--space-4);
+	grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.co-overline,
+.co-badge {
+	font-size: var(--text-xs);
+	line-height: var(--lh-xs);
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+}
+
+.co-badge {
+	display: inline-block;
+	padding: var(--space-1) var(--space-2);
+	border-radius: var(--radius-sm);
+	background: var(--color-nebula-soft);
+	color: var(--color-nebula);
+}
+
+.co-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 44px;
+	padding: var(--space-3) var(--space-5);
+	border-radius: var(--radius-md);
+	font-size: var(--text-sm);
+	font-weight: 600;
+	text-decoration: none;
+	transition:
+		box-shadow var(--duration-fast) var(--ease-orbit),
+		border-color var(--duration-fast) var(--ease-orbit);
+}
+
+.co-btn--primary {
+	background: var(--gradient-accent);
+	color: var(--color-text-on-accent);
+}
+
+.co-btn--primary:hover {
+	box-shadow: var(--glow-ion);
+}
+
+.co-btn--secondary {
+	border: 1px solid var(--color-border-strong);
+	color: var(--color-text);
+}
+
+.co-btn--secondary:hover {
+	border-color: var(--color-ion);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.co-card,
+	.co-btn {
+		transition: none;
+	}
+}

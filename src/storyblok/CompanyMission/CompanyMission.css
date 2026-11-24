@@ -1,0 +1,12 @@
+/* Mission, vision and values */
+.co-mv {
+	display: grid;
+	gap: var(--space-4);
+	margin-bottom: var(--space-6);
+}
+
+@media (min-width: 1024px) {
+	.co-mv {
+		grid-template-columns: 1fr 1fr;
+	}
+}

@@ -163,3 +163,52 @@ export interface NavigationHeaderBlok extends SbBlokData {
 	tabs?: NavTabBlok[];
 	languages?: NavLanguageBlok[];
 }
+
+export interface ErrorMessageBlok extends SbBlokData {
+	/** e.g. "404". Empty marks the default message used for any other failure. */
+	status_code?: string;
+	title?: string;
+	message?: string;
+	action_label?: string;
+	action_link?: StoryblokLink;
+}
+
+export interface ErrorPageBlok extends SbBlokData {
+	messages?: ErrorMessageBlok[];
+}
+
+export interface AgencyCtaBlok extends SbBlokData {
+	label?: string;
+	type?: 'primary' | 'secondary';
+	link?: StoryblokLink;
+}
+
+export interface PlanetHeroBannerBlok extends SbBlokData {
+	/** Image or video. */
+	planet_hero_image?: StoryblokAsset;
+	planet_name?: string;
+	planet_description?: string;
+	cta?: AgencyCtaBlok[];
+}
+
+export interface PlanetBlok extends SbBlokData {
+	hero?: PlanetHeroBannerBlok[];
+}
+
+export interface PlanetCtaBlok extends SbBlokData {
+	planet_name?: string;
+	/** Image or video. */
+	planet_image?: StoryblokAsset;
+	/** Markdown field; rendered as plain text. */
+	planet_description?: string;
+	planet_link?: StoryblokLink;
+}
+
+export interface PlanetsHeroBlok extends SbBlokData {
+	/** Small line above the title, e.g. "Destinations 2087". */
+	subtitle?: string;
+	title?: string;
+	/** Hint under the title, e.g. "Tap a planet to start your journey." */
+	helper_cutline?: string;
+	planet_links?: PlanetCtaBlok[];
+}

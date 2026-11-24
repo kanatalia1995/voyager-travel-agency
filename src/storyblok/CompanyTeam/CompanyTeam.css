@@ -1,0 +1,15 @@
+/* Team and avatars */
+.co-photo {
+	width: 100%;
+	aspect-ratio: 1;
+	object-fit: cover;
+	border-radius: var(--radius-lg);
+	margin-bottom: var(--space-4);
+	background: var(--color-surface-raised);
+}
+
+.co-role {
+	margin-top: var(--space-1);
+	color: var(--color-nebula);
+	font-size: var(--text-sm);
+}
